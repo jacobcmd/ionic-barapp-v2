@@ -1,0 +1,7 @@
+{
+  "name": "bar-lasted",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
