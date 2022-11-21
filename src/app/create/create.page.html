@@ -5,5 +5,7 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-button expand="full" (click)="scan()">scanear</ion-button>
+  <p *ngIf="code">code: {{code}}</p>
+  <p>code: {{code}}</p>
 </ion-content>
