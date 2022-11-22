@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
+
+  user: User = {
+    username: "",
+    password: "",
+    firstname: "",
+    lastname: ""
+  };
 
   constructor(
     private authService: AuthService,
@@ -33,7 +41,7 @@ export class LoginPage {
     const loading = await this.loadingCtrl.create({ message: 'Logging in ...' });
     await loading.present();
 
-    this.authService.login(this.form.value).subscribe(
+    this.authService.login(this.user).subscribe(
       async token => {
         localStorage.setItem('token', token);
         loading.dismiss();

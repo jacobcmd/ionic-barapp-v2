@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'create',
     loadChildren: () => import('./create/create.module').then( m => m.CreatePageModule)
   },
+  {
+    path: 'new-ordenes',
+    loadChildren: () => import('./new-ordenes/new-ordenes.module').then( m => m.NewOrdenesPageModule)
+  },
+  {
+    path: 'ordenes-modal',
+    loadChildren: () => import('./ordenes-modal/ordenes-modal.module').then( m => m.OrdenesModalPageModule)
+  },
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,13 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterPage  {
 
+  user: User = {
+    username: "",
+    password: "",
+    firstname: "",
+    lastname: ""
+  };
+  
   constructor(
     private authService: AuthService,
     private alertCtrl: AlertController,
@@ -39,7 +47,7 @@ export class RegisterPage  {
   async onSubmit(){
     const loading = await this.loadingCtrl.create({ message: 'Registering...' });
     await loading.present();
-    this.authService.register(this.form.value).subscribe(
+    this.authService.register(this.user).subscribe(
       // If success
       async () => {
         const toast = await this.toastCtrl.create({ message: 'User Created', duration: 2000, color: 'dark' });
