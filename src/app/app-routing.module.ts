@@ -30,7 +30,23 @@ const routes: Routes = [
   {
     path: 'ordenes-modal',
     loadChildren: () => import('./ordenes-modal/ordenes-modal.module').then( m => m.OrdenesModalPageModule)
+  },  {
+    path: 'productos-modal',
+    loadChildren: () => import('./productos-modal/productos-modal.module').then( m => m.ProductosModalPageModule)
   },
+  {
+    path: 'new-productos',
+    loadChildren: () => import('./new-productos/new-productos.module').then( m => m.NewProductosPageModule)
+  },
+  {
+    path: 'pulseras-modal',
+    loadChildren: () => import('./pulseras-modal/pulseras-modal.module').then( m => m.PulserasModalPageModule)
+  },
+  {
+    path: 'new-pulseras',
+    loadChildren: () => import('./new-pulseras/new-pulseras.module').then( m => m.NewPulserasPageModule)
+  },
+
 ];
 
 @NgModule({

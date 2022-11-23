@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="closeModal()">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{isUpdate ? 'Editar' : 'Agregar'}} Producto </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-item>
+      <ion-label position="floating">Nombre: </ion-label>
+        <ion-input [(ngModel)]="data.nombre" name="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio: </ion-label>
+        <ion-input [(ngModel)]="data.precio" name="precio"></ion-input>
+    </ion-item>
+    <ion-button fill="outline" expand="block" color="primary" class="ion-margin-top" type="submit">
+      {{isUpdate ? 'Editar' : 'Guardar'}}</ion-button>
+  </form>
+</ion-content>
