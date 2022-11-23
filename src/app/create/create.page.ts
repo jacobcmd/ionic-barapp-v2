@@ -47,8 +47,8 @@ export class CreatePage implements OnInit {
 
   scan(){
     this.barcodeScanner.scan().then(barcodeData => {
-      this.code=barcodeData.text;      
-      console.log('code:', this.code)
+      this.id=barcodeData.text;      
+      this.buscarPulsera();
      }).catch(err => {
          console.log('Error', err);
      });
