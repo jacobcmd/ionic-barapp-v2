@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlertController, ModalController } from '@ionic/angular';
 import { Ordenes, OrdenesService } from '../services/ordenes.service';
+import { Productos, ProductosService } from '../services/productos.service';
 
 @Component({
   selector: 'app-ordenes-modal',
@@ -9,6 +10,7 @@ import { Ordenes, OrdenesService } from '../services/ordenes.service';
   styleUrls: ['./ordenes-modal.page.scss'],
 })
 export class OrdenesModalPage implements OnInit {
+  productos : Productos[];
   @Input() ordenes : Ordenes;
   isUpdate = false;
   data = {
@@ -20,7 +22,8 @@ export class OrdenesModalPage implements OnInit {
 
   constructor(
     private serviceO : OrdenesService,
-    private modalCtrl : ModalController
+    private modalCtrl : ModalController,
+    private serviceP : ProductosService
   ) { }
 
   ngOnInit() {
@@ -28,6 +31,9 @@ export class OrdenesModalPage implements OnInit {
       this.isUpdate = true;
       this.data = this.ordenes;
     }
+    this.serviceP.getAll().subscribe(responseP => {
+      this.productos = responseP;
+    });
   }
 
   closeModal(){
