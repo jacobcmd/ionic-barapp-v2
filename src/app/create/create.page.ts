@@ -17,13 +17,11 @@ export class CreatePage implements OnInit {
   pulseras: Pulseras[];
   productos: Productos[];
   ordenes: Ordenes[];
-  ordens: Ordenes[];
   searchedOrdenes: any;
   control = new FormControl();
   id : string;
   pulsera : Pulseras;
 
-  code:any;
   constructor(
     private barcodeScanner: BarcodeScanner,
     private http: HttpClient, 
@@ -35,12 +33,6 @@ export class CreatePage implements OnInit {
     ) { }
 
     ngOnInit(): void {
-      this.service.getAll().subscribe(response => {
-        this.pulseras = response;
-      })
-      this.serviceP.getAll().subscribe(responseP => {
-        this.productos = responseP;
-      })
       
     }
 
@@ -103,7 +95,6 @@ export class CreatePage implements OnInit {
         text: 'Si',
         handler: () => {
           this.serviceO.remove(id).subscribe(() => {
-            this.ordenes = this.ordenes.filter(std => std.id !== id);
             console.log('delete orden # ', id);
             this.buscarPulsera();
           });
