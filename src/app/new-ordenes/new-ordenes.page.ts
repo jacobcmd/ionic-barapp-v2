@@ -23,10 +23,6 @@ export class NewOrdenesPage implements OnInit {
     });
   }
 
-  closeModal(){
-    this.modalCtrl.dismiss(null, 'closed');
-  }
-
   removeOrdenes(id: string){
     this.alertCtrl.create({
       header: 'Eliminar',

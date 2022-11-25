@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AlertController, ModalController } from '@ionic/angular';
+import {  ModalController } from '@ionic/angular';
 import { Ordenes, OrdenesService } from '../services/ordenes.service';
 import { Productos, ProductosService } from '../services/productos.service';
 
@@ -50,7 +50,8 @@ export class OrdenesModalPage implements OnInit {
     } else {
       this.serviceO.create(orden).subscribe(response => {
         this.modalCtrl.dismiss(response, 'created');
-      }); 
+      });
+      
     }
   }
 
