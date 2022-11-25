@@ -30,6 +30,8 @@ private url = 'https://api-appbar-v2-production.up.railway.app/api/pulseras';
   }
 
   update(pulseras: Pulseras, id: string){
+    console.log(pulseras);
+    console.log(id);
     return this.http.put(this.url + '/' + id, pulseras);
   }
 
