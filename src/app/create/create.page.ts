@@ -86,4 +86,10 @@ export class CreatePage implements OnInit {
     });
   }
 
+  pagar(){
+    this.service.update(this.pulsera, this.id).subscribe(() => {
+      this.buscarPulsera();
+    });
+  }
+
 }
