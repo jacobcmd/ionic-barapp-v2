@@ -22,7 +22,7 @@ export class OrdenesService {
   }
 
   get(id: string){
-    return this.http.get<Ordenes>(this.url + '/' + id);
+    return this.http.get<[Ordenes]>(this.url + '/' + id);
   }
 
   create(ordenes: Ordenes){

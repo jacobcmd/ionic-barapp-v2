@@ -17,6 +17,7 @@ export class CreatePage implements OnInit {
   pulseras: Pulseras[];
   productos: Productos[];
   ordenes: Ordenes[];
+  ordens: Ordenes[];
   searchedOrdenes: any;
   control = new FormControl();
   id : string;
@@ -40,9 +41,7 @@ export class CreatePage implements OnInit {
       this.serviceP.getAll().subscribe(responseP => {
         this.productos = responseP;
       })
-      this.serviceO.getAll().subscribe(responseO => {
-        this.ordenes = responseO;
-      })
+      
     }
 
   scan(){
@@ -85,12 +84,34 @@ export class CreatePage implements OnInit {
       this.pulsera = response;
       console.log(this.pulsera);
     });
+    this.serviceO.get(this.id).subscribe(responseO => {
+      this.ordenes = responseO;
+    })
   }
 
   pagar(){
     this.service.update(this.pulsera, this.id).subscribe(() => {
       this.buscarPulsera();
     });
+  }
+
+  removeOrdenes(id: string){
+    this.alertCtrl.create({
+      header: 'Eliminar',
+      message: '¿Estas seguro que quieres eliminar el producto?',
+      buttons: [{
+        text: 'Si',
+        handler: () => {
+          this.serviceO.remove(id).subscribe(() => {
+            this.ordenes = this.ordenes.filter(std => std.id !== id);
+            console.log('delete orden # ', id);
+            this.buscarPulsera();
+          });
+        }
+      }, 
+    { text: 'No' } 
+  ]
+}).then(alertEl => alertEl.present());
   }
 
 }
