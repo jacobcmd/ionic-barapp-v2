@@ -80,7 +80,6 @@ export class CreatePage implements OnInit {
   }
 
   buscarPulsera(){
-    console.log("Holii");
     this.service.get(this.id).subscribe(response => {
       this.pulsera = response;
       console.log(this.pulsera);
