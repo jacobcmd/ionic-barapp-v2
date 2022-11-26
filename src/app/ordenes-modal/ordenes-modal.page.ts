@@ -12,6 +12,7 @@ import { Productos, ProductosService } from '../services/productos.service';
 export class OrdenesModalPage implements OnInit {
   productos : Productos[];
   @Input() ordenes : Ordenes;
+  @Input() id : string;
   isUpdate = false;
   data = {
     id_pulsera : '',
@@ -24,7 +25,8 @@ export class OrdenesModalPage implements OnInit {
     private serviceO : OrdenesService,
     private modalCtrl : ModalController,
     private serviceP : ProductosService
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
     if (this.ordenes) {
@@ -34,6 +36,9 @@ export class OrdenesModalPage implements OnInit {
     this.serviceP.getAll().subscribe(responseP => {
       this.productos = responseP;
     });
+    console.log(this.id);
+    this.data.id_pulsera = this.id;
+    this.data.id_usuario = '100';
   }
 
   closeModal(){
@@ -42,6 +47,7 @@ export class OrdenesModalPage implements OnInit {
 
   onSubmit(form: NgForm){
     const orden = form.value;
+    console.log(orden);
     if(this.isUpdate){
       this.serviceO.update(orden, this.ordenes.id).subscribe(() => {
         this.ordenes.id = this.ordenes.id;
