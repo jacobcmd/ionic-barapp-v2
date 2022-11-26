@@ -13,18 +13,18 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-      <ion-list *ngFor="let pulseras of pulseras">
+      <ion-list *ngFor="let pulsera of pulseras">
         <ion-item-sliding>
           <ion-item>
             <ion-label>
-              <h3>{{pulseras.id}}</h3>
+              <h3>{{pulsera.id_pulsera}}</h3>
             </ion-label>
           </ion-item>
           <ion-item-options side="end">
-            <ion-item-option color="danger" (click)="removePulsera(pulsera.id)">
+            <ion-item-option color="danger" (click)="removePulsera(pulsera.id_pulsera)">
               <ion-icon name="trash"></ion-icon>
             </ion-item-option>
-            <ion-item-option color="success" (click)="updatePulsera(pulseras)">
+            <ion-item-option color="success" (click)="updatePulsera(pulsera)">
               Editar
             </ion-item-option>
           </ion-item-options>
