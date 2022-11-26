@@ -87,13 +87,14 @@ export class CreatePage implements OnInit {
     });
   }
 
-  removeOrdenes(id: string){
+  removeOrdenes(id: number){
     this.alertCtrl.create({
       header: 'Eliminar',
       message: '¿Estas seguro que quieres eliminar el producto?',
       buttons: [{
         text: 'Si',
         handler: () => {
+          console.log
           this.serviceO.remove(id).subscribe(() => {
             console.log('delete orden # ', id);
             this.buscarPulsera();

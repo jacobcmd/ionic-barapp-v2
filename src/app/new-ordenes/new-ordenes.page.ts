@@ -27,7 +27,7 @@ export class NewOrdenesPage implements OnInit {
     this.modalCtrl.dismiss(null, 'closed');
   }
 
-  removeOrdenes(id: string){
+  removeOrdenes(id: number){
     this.alertCtrl.create({
       header: 'Eliminar',
       message: '¿Estas seguro que quieres eliminar el producto?',
@@ -35,7 +35,7 @@ export class NewOrdenesPage implements OnInit {
         text: 'Si',
         handler: () => {
           this.service.remove(id).subscribe(() => {
-            this.ordenes = this.ordenes.filter(std => std.id !== id);
+            //this.ordenes = this.ordenes.filter(std => std.id !== id);
           });
         }
       }, 
