@@ -33,7 +33,7 @@ export class OrdenesService {
     return this.http.put(this.url + '/' + id, ordenes);
   }
 
-  remove(id: string){
+  remove(id: number){
     return this.http.delete(this.url + '/' + id);
   }
 }
