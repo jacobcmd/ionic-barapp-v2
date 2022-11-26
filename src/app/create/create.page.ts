@@ -33,7 +33,13 @@ export class CreatePage implements OnInit {
     ) { }
 
     ngOnInit(): void {
-      
+    }
+
+    ionViewWillEnter(){
+      if(this.id ){
+        this.buscarPulsera();
+        console.log("Id init" ,this.id);
+      }
     }
 
   scan(){
@@ -54,24 +60,48 @@ export class CreatePage implements OnInit {
     this.http.post(`http://localhost/auth_app/api/create`, 'body', { headers }).subscribe(console.log);
   }
 
-  addOrden() {
+
+
+  addOrden(id : String) {
     this.modalCtrl
     .create({
-      component: OrdenesModalPage
+      component: OrdenesModalPage,
+      componentProps: { id }
     })
     .then(modal => {
       modal.present();
       return modal.onDidDismiss();
     })
     .then(({ data, role }) => {
+      console.log(id);
       if (role === 'created'){
         this.ordenes.push();
       }
     });
   }
 
+  nuevaOrden(id : String){
+    this.modalCtrl
+    .create({
+      component: OrdenesModalPage,
+      componentProps: { id }
+    })
+    .then(modal => {
+      modal.present();
+      return modal.onDidDismiss();
+    })
+    .then(({ data, role }) => {
+      this.ordenes = this.ordenes.filter(std => {
+        console.log("Update ordenes");
+        if(data.id === std.id){
+          return data;
+        }
+        return std;
+      });
+    });
+  }
+
   buscarPulsera(){
-    console.log("Holii");
     this.service.get(this.id).subscribe(response => {
       this.pulsera = response;
       console.log(this.pulsera);
@@ -105,5 +135,7 @@ export class CreatePage implements OnInit {
   ]
 }).then(alertEl => alertEl.present());
   }
+
+  
 
 }

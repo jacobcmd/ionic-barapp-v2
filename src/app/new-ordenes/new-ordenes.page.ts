@@ -23,11 +23,7 @@ export class NewOrdenesPage implements OnInit {
     });
   }
 
-  closeModal(){
-    this.modalCtrl.dismiss(null, 'closed');
-  }
-
-  removeOrdenes(id: number){
+  removeOrdenes(id: string){
     this.alertCtrl.create({
       header: 'Eliminar',
       message: '¿Estas seguro que quieres eliminar el producto?',
@@ -56,6 +52,7 @@ export class NewOrdenesPage implements OnInit {
     })
     .then(({ data, role }) => {
       this.ordenes = this.ordenes.filter(std => {
+        console.log("Update ordenes");
         if(data.id === std.id){
           return data;
         }

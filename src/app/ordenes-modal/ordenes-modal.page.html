@@ -16,13 +16,13 @@
         <ion-input [(ngModel)]="data.id_pulsera" name="id_pulsera"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-select placeholder="Productos">
-        <ion-select-option *ngFor="let producto of productos; let i = index" value="producto[i].id">{{producto.nombre}}</ion-select-option>
-      </ion-select>
+      <select name="id_producto" [(ngModel)]="data.id_producto">
+        <option *ngFor="let producto of productos" [value]="producto.id">{{producto.nombre}}</option>
+      </select>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Cantidad: </ion-label>
-        <ion-input [(ngModel)]="data.cantidad" name="cantidad"></ion-input>
+        <ion-input [(ngModel)]="data.cantidad" name="cantidad"  type="number"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">ID usuario: </ion-label>

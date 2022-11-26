@@ -12,8 +12,7 @@ export class NewPulserasPage implements OnInit {
   @Input() pulsera: Pulseras;
   isUpdate = false;
   data = {
-    pagado: '',
-    total: ''
+    id_pulsera : ''
   };
 
   constructor(
@@ -35,8 +34,8 @@ export class NewPulserasPage implements OnInit {
   onSubmit(form: NgForm){
     const pulsera = form.value;
     if(this.isUpdate){
-      this.serviceP.update(pulsera, this.pulsera.id).subscribe(() => {
-        pulsera.id = this.pulsera.id;
+      this.serviceP.update(pulsera, this.pulsera.id_pulsera).subscribe(() => {
+        pulsera.id = this.pulsera.id_pulsera;
         this.modalCtrl.dismiss(pulsera, 'updated');
       });
     } else {

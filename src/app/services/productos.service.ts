@@ -13,7 +13,7 @@ export interface Productos {
 })
 
 export class ProductosService {
-  private url = 'https://api-appbar-v2-production.up.railway.app/api/productos';
+  private url = 'https://api-appbar-v2-production.up.railway.app/api/pulseras/';
 
   constructor(private http: HttpClient) { }
 

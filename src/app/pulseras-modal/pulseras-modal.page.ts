@@ -39,15 +39,15 @@ export class PulserasModalPage implements OnInit {
     });
   }
 
-  removePulsera(id: string){
+  removePulsera(id_pulsera: string){
     this.alertCtrl.create({
       header: 'Eliminar',
       message: '¿Estas seguro que quieres eliminar la pulsera?',
       buttons: [{
         text: 'Si',
         handler: () => {
-          this.service.remove(id).subscribe(() => {
-            this.pulseras = this.pulseras.filter(std => std.id !== id);
+          this.service.remove(id_pulsera).subscribe(() => {
+            this.pulseras = this.pulseras.filter(std => std.id !== id_pulsera);
           });
         }
       }, 
@@ -68,7 +68,7 @@ export class PulserasModalPage implements OnInit {
     })
     .then(({ data, role }) => {
       this.pulseras = this.pulseras.filter(std => {
-        if(data.id === std.id){
+        if(data.id_pulsera === std.id_pulsera){
           return data;
         }
         return std;
