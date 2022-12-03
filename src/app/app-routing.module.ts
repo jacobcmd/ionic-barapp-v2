@@ -30,7 +30,8 @@ const routes: Routes = [
   {
     path: 'ordenes-modal',
     loadChildren: () => import('./ordenes-modal/ordenes-modal.module').then( m => m.OrdenesModalPageModule)
-  },  {
+  },
+  {
     path: 'productos-modal',
     loadChildren: () => import('./productos-modal/productos-modal.module').then( m => m.ProductosModalPageModule)
   },
@@ -45,7 +46,10 @@ const routes: Routes = [
   {
     path: 'new-pulseras',
     loadChildren: () => import('./new-pulseras/new-pulseras.module').then( m => m.NewPulserasPageModule)
-  },
+  },  {
+    path: 'avisos-privacidad',
+    loadChildren: () => import('./avisos-privacidad/avisos-privacidad.module').then( m => m.AvisosPrivacidadPageModule)
+  }
 
 ];
 
