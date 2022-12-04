@@ -36,7 +36,7 @@
     <ion-label color="warning" *ngIf="pulsera[0].pagado==0">
       <h2>Pagado: NO</h2>
     </ion-label>
-    <ion-button expand="full" (click)="pagar()" color="success" *ngIf="pulsera[0].pagado==0">Pagar</ion-button>
+    <ion-button expand="full" (click)="pagar()" color="success" *ngIf="((pulsera[0].pagado==0) && (pulsera[0].total>0))">Pagar</ion-button>
     <ion-list *ngFor="let orden of ordenes">
       <ion-item-sliding>
         <ion-item>
